@@ -69,8 +69,12 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
+    
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        role-to-assume: ${{ secrets.RoleArn }}
+        aws-region: us-east-1
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -88,11 +92,11 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: infracost/actions@76044219fc940916b6f8f2e9e83f075cfb46caa2
       uses: infracost/actions@v1.1.0
-#       with:
+      with:
         # Your Infracost API key. It can be retrieved by running `infracost configure get api_key`. If you don't have one, download Infracost (https://www.infracost.io/docs/#quick-start) and run `infracost register` to get a free API key.
 #         api-key: 
         # The path that will be passed to `infracost breakdown`. This may be a path to a Terraform plan JSON or a Terraform project. Project support requires Terraform to have been installed with hashicorp/setup-terraform@v1.
-        path: .
+        path: "."
         # The behavior to use when posting cost estimate comments. Must be one of 'update' | 'delete-and-new' | 'hide-and-new' | 'new'.
         # behavior: # optional, default is update
 
