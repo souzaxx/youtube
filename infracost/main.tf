@@ -59,7 +59,7 @@ module "instance" {
   instance_count = 1
 
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.large"
+  instance_type          = "t2.micro"
   vpc_security_group_ids = [module.security_group.this_security_group_id]
   subnet_ids             = module.vpc.private_subnets
   iam_instance_profile   = module.role.iam_instance_profile_name
