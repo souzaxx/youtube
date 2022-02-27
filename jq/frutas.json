@@ -1,0 +1,24 @@
+{
+  "frutas": [
+    {
+      "nome": "maça",
+      "cor": "verde",
+      "preço": 1.2
+    },
+    {
+      "nome": "maça",
+      "cor": "vermelha",
+      "preço": 0.5
+    },
+    {
+      "nome": "banana",
+      "cor": "amarela",
+      "preço": 0.5
+    },
+    {
+      "nome": "kiwi",
+      "cor": "verde",
+      "preço": 1.25
+    }
+  ]
+}
